@@ -1,44 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
+        stage('Check Environment') {
             steps {
-                echo 'Cloning the repository...'
-                // No explicit Git commands required if using Pipeline SCM configuration
+                echo 'Checking environment variables...'
+                bat 'echo PATH=%PATH%'
             }
         }
         stage('Build') {
             steps {
-                echo 'Building the application...'
-                // Replace this with your actual build command
-                bat 'echo Simulating build step...'
+                echo 'Simulating build...'
+                bat 'echo Build step running...'
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Replace this with your actual test command
-                bat 'echo Simulating test step...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                // Replace this with your actual deploy command
-                bat 'echo Simulating deploy step...'
-            }
-        }
-    }
-    post {
-        always {
-            echo 'Cleaning up workspace...'
-            deleteDir() // Clean the workspace
-        }
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed. Check the logs for details.'
         }
     }
 }
